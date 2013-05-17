@@ -1,0 +1,21 @@
+﻿@using MvcBootstrap.Views.Extensions
+@model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
+@{
+    ViewBag.Title = this.EntityActionTitle();
+}
+
+@this.Bootstrap().ReturnLink()
+
+<h1>@ViewBag.Title</h1>
+
+@using (this.Bootstrap().BeginCreateForm())
+{
+    @Html.EditorForModel("EntityViewModel")
+    
+    <div class="control-group">
+        <div class="controls">
+            @this.Bootstrap().SaveSubmit()
+            @this.Bootstrap().CancelLink()
+        </div>
+    </div>
+}

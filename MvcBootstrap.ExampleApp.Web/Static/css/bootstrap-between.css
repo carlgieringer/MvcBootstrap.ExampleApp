@@ -1,0 +1,5 @@
+﻿/* Styles that must appear after bootstrap but before bootstrap responsive */
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}

@@ -1,0 +1,87 @@
+﻿@using MvcBootstrap.Views.Extensions
+@using MvcBootstrap.ViewModels
+@model IList<IEntityViewModel>
+@{
+    var type = Model.GetType();
+    Type underlyingType;
+    if (type.IsArray)
+    {
+        underlyingType = type.GetElementType();
+    }
+    else
+    {
+        var genericArgs = type.GetGenericArguments();
+        underlyingType = genericArgs[0];
+    }
+    
+    var properties = ModelMetadataProviders.Current
+        .GetMetadataForType(() => null, underlyingType)
+        .Properties
+        .Where(pm => pm.ShouldShow(ViewData) && !pm.IsHidden());
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @foreach(var property in properties) 
+            {
+                <th>
+                    @property.GetDisplayName() 
+                </th>
+            } 
+            <th>
+                <!-- Actions Dropdown -->
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var itemMD = ModelMetadata.FromLambdaExpression(m => m[i], ViewData);
+            <tr>
+                @foreach (var property in properties)
+                {
+                    <td>
+                        @{ var propertyMetadata = itemMD.Properties.Single(m => m.PropertyName == property.PropertyName); }
+                        @if (propertyMetadata.IsComplexType)
+                        {
+                            @propertyMetadata.SimpleDisplayText
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => propertyMetadata.Model)
+                        }
+                    </td>
+                }
+                <td>
+                    <div class="btn-group pull-right">
+                        <a href="@Url.Action("Read", this.ControllerName(), new { Model[i].Id }, null)" class="btn">
+                            View
+                        </a>
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Edit", "Update", this.ControllerName(), new { Model[i].Id }, null)
+                            </li>
+                            <li>
+                                @using (Html.BeginForm("Delete", this.ControllerName(), new { Model[i].Id }))
+                                {
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="icon-trash icon-white"></i> Delete
+                                    </button>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </td>     
+                <td>
+                
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

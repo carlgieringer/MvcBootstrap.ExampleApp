@@ -1,0 +1,32 @@
+﻿.flash {
+    padding: 10px;
+}
+
+.flash.text-info {
+    border: 1px solid #3a87ad;
+    background-color: #EEF;
+}
+
+.flash.text-success {
+    border: 1px solid #468847;
+    background-color: #BEB;
+}
+
+.flash.text-warning {
+    border: 1px solid #c09853;
+    background-color: #FFC;
+}
+
+.flash.text-error {
+    border: 1px solid #b94a48;
+    background-color: #FCC;
+}
+
+.dropdown-menu form {
+    margin: 0 5px;
+}
+
+.dropdown-menu form input, .dropdown-menu form button {
+    text-align: left;
+    width: 100%;
+}

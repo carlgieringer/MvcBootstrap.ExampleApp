@@ -1,0 +1,3 @@
+[submodule "MvcBootstrap"]
+	path = MvcBootstrap
+	url = git@github.com:carlgieringer/MvcBootstrap.git

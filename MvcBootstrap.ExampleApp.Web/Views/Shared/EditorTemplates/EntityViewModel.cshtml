@@ -1,0 +1,59 @@
+﻿@model MvcBootstrap.ViewModels.IEntityViewModel
+@using MvcBootstrap.Reflection
+@using MvcBootstrap.Views.Extensions
+
+@if (Model == null)
+{
+    @ViewData.ModelMetadata.NullDisplayText
+}
+else if (ViewData.TemplateInfo.TemplateDepth > 1)
+{
+    @ViewData.ModelMetadata.SimpleDisplayText
+}
+else 
+{
+    if (Model.ConcurrentlyEdited != null)
+    {
+        <text>
+            <div class="text-error">
+                Another edit occurred since you requested the page.  Please ensure the correct values are below.  Cancel to leave the new current values.
+            </div>
+        </text>
+    }
+    
+    foreach (var propMeta in ViewData.ModelMetadata.Properties.Where(meta => meta.ShouldShow(ViewData))) 
+    { 
+        if (propMeta.HideSurroundingHtml) 
+        { 
+            @Html.Editor(propMeta.PropertyName) 
+        }
+        else 
+        {
+            <div class="control-group">
+                <label class="control-label">@propMeta.GetDisplayName()</label>
+                <div class="controls">
+                    @if (propMeta.ShouldEdit())
+                    {
+                        @Html.Editor(propMeta.PropertyName)
+
+                        if (Model.ConcurrentlyEdited != null)
+                        {
+                            var enteredValue = ReflectionHelper.GetProperty(Model, propMeta.PropertyName);
+                            var currentValue = ReflectionHelper.GetProperty(Model.ConcurrentlyEdited, propMeta.PropertyName);
+                            if (enteredValue != currentValue)
+                            {
+                                <span class="text-error">
+                                    Current Value: @currentValue
+                                </span>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        @Html.Display(propMeta.PropertyName)
+                    }
+                </div>
+            </div>
+        } 
+    } 
+}

@@ -1,0 +1,12 @@
+﻿@using MvcBootstrap.Views.Extensions
+@using MvcBootstrap.ExampleApp.Web.ViewModels
+@model IList<EmployeeViewModel>
+@{
+    ViewBag.Title = this.ControllerName();
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.DisplayForModel("EntityTable")
+
+@this.Bootstrap().CreateLink()

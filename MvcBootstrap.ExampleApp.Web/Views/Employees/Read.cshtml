@@ -1,0 +1,19 @@
+﻿@using MvcBootstrap.Views.Extensions
+@model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
+@{
+    ViewBag.Title = this.EntityActionTitle();
+}
+
+@this.Bootstrap().ReturnLink()
+
+<h1>@ViewBag.Title</h1>
+
+<div class="form-horizontal">
+    @Html.DisplayForModel("EntityViewModel")
+
+    <div class="control-group">
+        <div class="controls">
+            @this.Bootstrap().EditLink(Model.Id.Value)
+        </div>
+    </div>
+</div>
