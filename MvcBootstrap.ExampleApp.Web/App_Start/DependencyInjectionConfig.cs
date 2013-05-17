@@ -15,7 +15,7 @@
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.Register(c => new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleContext"))
+            builder.Register(c => new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"))
                 .As<DbContext>()
                 .InstancePerHttpRequest();
             builder.Register(c => new EmployeesRepository(c.Resolve<DbContext>()))

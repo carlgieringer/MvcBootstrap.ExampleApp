@@ -1,21 +1,23 @@
-﻿namespace MvcBootstrap.ExampleApp.Data.Tests
+﻿namespace MvcBootstrap.ExampleApp.Data.Tests.ConcurrentUpdates
 {
     using System.Data.Entity.Infrastructure;
     using System.Linq;
 
+    using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Data.Repositories;
+    using MvcBootstrap.Tests;
 
     using NUnit.Framework;
 
     [TestFixture]
-    public class ConcurrencyTests
+    public class ConcurrentUpdatesFixture
     {
-        private const string TestConnString = @"Data Source=(localdb)\v11.0;Integrated Security=true;Initial Catalog=MvcBootstrapExample.Tests";
-
         [SetUp]
         public void SetUp()
         {
-            var context = new ExampleAppContext(TestConnString);
+            TestHelper.SetDataDirectoryToAppDirectory();
+
+            var context = new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext");
             context.Database.Delete();
 
             var repository = new EmployeesRepository(context);
@@ -27,12 +29,12 @@
         }
 
         [Test]
-        public void OptomisticConcurrencyWorks()
+        public void ConcurrentUpdateThrowsException()
         {
-            var repository1 = new EmployeesRepository(new ExampleAppContext(TestConnString));
+            var repository1 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"));
             var employee1 = repository1.Items.Single(e => e.Name == "Fred");
 
-            var repository2 = new EmployeesRepository(new ExampleAppContext(TestConnString));
+            var repository2 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"));
             var employee2 = repository2.Items.Single(e => e.Name == "Fred");
 
             Assert.That(employee1.Id, Is.EqualTo(employee2.Id));
@@ -43,7 +45,7 @@
 
             employee2.Name = "Barney";
             repository2.Update(employee2);
-            Assert.That(() => repository2.SaveChanges(), Throws.InstanceOf<DbUpdateConcurrencyException>());
+            Assert.That(() => repository2.SaveChanges(), Throws.InstanceOf<ConcurrentUpdateException>());
         }
     }
 }

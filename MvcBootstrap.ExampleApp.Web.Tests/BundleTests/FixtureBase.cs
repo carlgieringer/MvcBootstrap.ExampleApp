@@ -1,6 +1,8 @@
 ﻿namespace MvcBootstrap.ExampleApp.Web.Tests.BundleTests
 {
     using System;
+    using System.IO;
+    using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.Optimization;
 
@@ -10,6 +12,8 @@
 
     internal class FixtureBase
     {
+        private static readonly Regex VirtualRootRegex = new Regex(@"^~[/\\]");
+
         protected BundleContext BundleContext { get; set; }
 
         [SetUp]
@@ -20,16 +24,18 @@
             BundleTable.MapPathMethod = MapBundlePath;
         }
 
-        protected static string MapBundlePath(string item)
+        protected static string MapBundlePath(string itemVirtualPath)
         {
-            // todo: Replace this with whatever logic you need to map from your virtual paths to a physical path
+            // Use windows-style slashes
+            itemVirtualPath = itemVirtualPath.Replace("/", @"\");
 
-            // Strip the ~ and switch from / to \
-            item = item.Replace("~", string.Empty).Replace("/", @"\");
+            // GetFullPath condenses parent references ".."
+            string webProjectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\MvcBootstrap.ExampleApp.Web\"));
 
-            // Join the item virtal path with the location of your MVC project
-            const string PathToMvcProject = @"C:\Users\M29783\Documents\Visual Studio 2012\Projects\MvcBootstrap\MvcBootstrap.ExampleApp.Web";
-            return string.Format("{0}{1}", PathToMvcProject, item);
+            // Replace the virtual path pattern with the file system path
+            string itemFullPath = VirtualRootRegex.Replace(itemVirtualPath, webProjectPath);
+
+            return itemFullPath;
         }
 
         protected static void AddDefaultIgnorePatterns(IgnoreList ignoreList)

@@ -29,11 +29,5 @@ namespace MvcBootstrap.ExampleApp.Web.Tests.MappingTests
         {
             Mapper.AssertConfigurationIsValid();
         }
-
-        [Test]
-        public void EmployeeFromViewModelMappingWorks()
-        {
-            Mapper.AssertConfigurationIsValid();
-        }
     }
 }
