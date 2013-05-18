@@ -10,7 +10,7 @@ else if (ViewData.TemplateInfo.TemplateDepth > 1)
 }
 else 
 { 
-    foreach (var prop in ViewData.ModelMetadata.Properties.Where(pm => pm.ShouldShow(ViewData))) 
+    foreach (var prop in ViewData.ModelMetadata.Properties.Where(pm => pm.ShouldShow(ViewContext))) 
     { 
         if (prop.HideSurroundingHtml) 
         { 

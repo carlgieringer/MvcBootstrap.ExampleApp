@@ -17,7 +17,7 @@
     var properties = ModelMetadataProviders.Current
         .GetMetadataForType(() => null, underlyingType)
         .Properties
-        .Where(pm => pm.ShouldShow(ViewData) && !pm.IsHidden());
+        .Where(pm => pm.ShouldShow(ViewContext) && !pm.IsHiddenInput());
 }
 
 <table class="table table-striped">

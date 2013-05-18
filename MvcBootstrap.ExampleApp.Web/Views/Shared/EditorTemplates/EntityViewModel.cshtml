@@ -21,7 +21,7 @@ else
         </text>
     }
     
-    foreach (var propMeta in ViewData.ModelMetadata.Properties.Where(meta => meta.ShouldShow(ViewData))) 
+    foreach (var propMeta in ViewData.ModelMetadata.Properties.Where(meta => meta.ShouldShow(ViewContext))) 
     { 
         if (propMeta.HideSurroundingHtml) 
         { 

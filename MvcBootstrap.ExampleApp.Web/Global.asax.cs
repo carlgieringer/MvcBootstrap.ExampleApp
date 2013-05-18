@@ -7,12 +7,14 @@
     using System.Web.Routing;
 
     using MvcBootstrap.ExampleApp.Web.App_Start;
+    using MvcBootstrap.Web.Mvc.ModelMetadata;
 
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             DependencyResolver.SetResolver(DependencyInjectionConfig.CreateResolver());
+            ModelMetadataProviders.Current = new BootstrapModelMetadataProvider();
 
             //ModelBinders.Binders.DefaultBinder = new MvcBootstrapModelBinder();
 
