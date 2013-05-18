@@ -11,11 +11,11 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
 {
     using AutoMapper;
 
-    using MvcBootstrap.Controllers;
     using MvcBootstrap.ExampleApp.Data.Repositories;
     using MvcBootstrap.ExampleApp.Domain.Models;
     using MvcBootstrap.ExampleApp.Web.ViewModels;
     using MvcBootstrap.Mapping;
+    using MvcBootstrap.Web.Mvc.Controllers;
 
     /// <summary>
     /// For viewing Employees
