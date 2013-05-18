@@ -17,7 +17,7 @@
         public void SetUp()
         {
             TestHelper.SetDataDirectoryToAppDirectory();
-            var context = new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext");
+            var context = new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests");
             this.repository = new EmployeesRepository(context);
         }
 

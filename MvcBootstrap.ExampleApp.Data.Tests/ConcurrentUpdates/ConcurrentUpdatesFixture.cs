@@ -17,7 +17,7 @@
         {
             TestHelper.SetDataDirectoryToAppDirectory();
 
-            var context = new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext");
+            var context = new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests");
             context.Database.Delete();
 
             var repository = new EmployeesRepository(context);
@@ -31,10 +31,10 @@
         [Test]
         public void ConcurrentUpdateThrowsException()
         {
-            var repository1 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"));
+            var repository1 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests"));
             var employee1 = repository1.Items.Single(e => e.Name == "Fred");
 
-            var repository2 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"));
+            var repository2 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests"));
             var employee2 = repository2.Items.Single(e => e.Name == "Fred");
 
             Assert.That(employee1.Id, Is.EqualTo(employee2.Id));

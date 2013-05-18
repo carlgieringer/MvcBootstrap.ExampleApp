@@ -76,11 +76,13 @@
     <Compile Include="BundleTests\StylesFixture.cs" />
     <Compile Include="ConcurrentEditTests.cs" />
     <Compile Include="ControllerTests\EmployeesControllerTests.cs" />
+    <Compile Include="DataTests\ContextFixture.cs" />
     <Compile Include="EntityViewModelMappingTests\RoleMappingFixture.cs" />
     <Compile Include="EntityViewModelMappingTests\EmployeeMappingFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
