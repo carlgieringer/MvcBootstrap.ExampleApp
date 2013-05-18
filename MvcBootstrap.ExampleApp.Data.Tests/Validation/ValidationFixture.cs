@@ -4,7 +4,7 @@
     using System.Data.Entity.Validation;
 
     using MvcBootstrap.ExampleApp.Data.Repositories;
-    using MvcBootstrap.Tests;
+    using MvcBootstrap.Testing;
 
     using NUnit.Framework;
 

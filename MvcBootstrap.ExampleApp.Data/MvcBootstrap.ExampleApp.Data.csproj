@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\RolesRepository.cs" />
+    <Compile Include="Repositories\IRolesRepository.cs" />
     <Compile Include="Repositories\EmployeesRepository.cs" />
     <Compile Include="Repositories\IEmployeesRepository.cs" />
     <Compile Include="ExampleAppContext.cs" />

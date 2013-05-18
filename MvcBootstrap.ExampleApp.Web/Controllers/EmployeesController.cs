@@ -9,10 +9,13 @@
 
 namespace MvcBootstrap.ExampleApp.Web.Controllers
 {
+    using AutoMapper;
+
     using MvcBootstrap.Controllers;
     using MvcBootstrap.ExampleApp.Data.Repositories;
     using MvcBootstrap.ExampleApp.Domain.Models;
     using MvcBootstrap.ExampleApp.Web.ViewModels;
+    using MvcBootstrap.Mapping;
 
     /// <summary>
     /// For viewing Employees
@@ -32,6 +35,8 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.Config.EntityLabelSelector = e => e.Name;
             this.Config.ViewModelLabelSelector = vm => vm.Name;
 
+            MappingHelper.CreateEntityToViewModelMap<Role, RoleViewModel>();
+            MappingHelper.CreateViewModelToEntityMap<RoleViewModel, Role>();
             this.ViewModelToEntityMappingExpression.ForMember(e => e.Roles, o => o.Ignore());
         }
     }

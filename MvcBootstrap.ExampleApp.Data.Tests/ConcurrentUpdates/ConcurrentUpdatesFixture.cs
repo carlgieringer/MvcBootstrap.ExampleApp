@@ -5,7 +5,7 @@
 
     using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Data.Repositories;
-    using MvcBootstrap.Tests;
+    using MvcBootstrap.Testing;
 
     using NUnit.Framework;
 

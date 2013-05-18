@@ -76,7 +76,8 @@
     <Compile Include="BundleTests\StylesFixture.cs" />
     <Compile Include="ConcurrentEditTests.cs" />
     <Compile Include="ControllerTests\EmployeesControllerTests.cs" />
-    <Compile Include="MappingTests\MappingTests.cs" />
+    <Compile Include="EntityViewModelMappingTests\RoleMappingFixture.cs" />
+    <Compile Include="EntityViewModelMappingTests\EmployeeMappingFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

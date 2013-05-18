@@ -3,10 +3,10 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Role
-    {
-        public int Id { get; set; }
+    using MvcBootstrap.Models;
 
+    public class Role : EntityBase
+    {
         [Required]
         public virtual string Title { get; set; }
 

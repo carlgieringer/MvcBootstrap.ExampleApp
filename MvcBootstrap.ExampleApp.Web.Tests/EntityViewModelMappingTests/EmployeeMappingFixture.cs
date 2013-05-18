@@ -1,6 +1,4 @@
-﻿using MvcBootstrap.ExampleApp.Data;
-
-namespace MvcBootstrap.ExampleApp.Web.Tests.MappingTests
+﻿namespace MvcBootstrap.ExampleApp.Web.Tests.EntityViewModelMappingTests
 {
     using AutoMapper;
 
@@ -13,7 +11,7 @@ namespace MvcBootstrap.ExampleApp.Web.Tests.MappingTests
     using NUnit.Framework;
 
     [TestFixture]
-    public class MappingTests
+    public class EmployeeMappingFixture
     {
         [SetUp]
         public void Setup()
@@ -25,9 +23,9 @@ namespace MvcBootstrap.ExampleApp.Web.Tests.MappingTests
         }
 
         [Test]
-        public void EmployeeToViewModelMappingWorks()
+        public void EmployeeEntityViewModelMappingWorks()
         {
-            Mapper.AssertConfigurationIsValid();
+            Assert.That(() => Mapper.AssertConfigurationIsValid(), Throws.Nothing);
         }
     }
 }
