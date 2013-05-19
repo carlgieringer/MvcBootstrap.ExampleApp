@@ -33,8 +33,9 @@
 
             var repository = new Mock<IEmployeesRepository>();
             repository.Setup(r => r.Items).Returns(employees.AsQueryable());
+            var rolesRepository = new Mock<IRolesRepository>();
 
-            var controller = new EmployeesController(repository.Object);
+            var controller = new EmployeesController(repository.Object, rolesRepository.Object);
             var result = controller.List() as ViewResult;
 
             var model = result.ViewData.Model as IEnumerable<EmployeeViewModel>;
@@ -52,8 +53,9 @@
 
             var repository = new Mock<IEmployeesRepository>();
             repository.Setup(r => r.GetById(1)).Returns(bob);
+            var rolesRepository = new Mock<IRolesRepository>();
 
-            var controller = new EmployeesController(repository.Object);
+            var controller = new EmployeesController(repository.Object, rolesRepository.Object);
             var result = controller.Read(1) as ViewResult;
 
             var model = result.ViewData.Model as EmployeeViewModel;
@@ -71,8 +73,9 @@
 
             var repository = new Mock<IEmployeesRepository>();
             repository.Setup(r => r.GetById(It.IsAny<int>())).Returns(bob);
+            var rolesRepository = new Mock<IRolesRepository>();
 
-            var controller = new EmployeesController(repository.Object);
+            var controller = new EmployeesController(repository.Object, rolesRepository.Object);
             var result = controller.Update(1) as ViewResult;
 
             var model = result.ViewData.Model as EmployeeViewModel;
@@ -93,8 +96,9 @@
 
             var repository = new Mock<IEmployeesRepository>();
             repository.Setup(r => r.Items).Returns(employees.AsQueryable());
+            var rolesRepository = new Mock<IRolesRepository>();
 
-            var controller = new EmployeesController(repository.Object);
+            var controller = new EmployeesController(repository.Object, rolesRepository.Object);
             var result = controller.List() as ViewResult;
 
             var model = result.ViewData.Model as IEnumerable<EmployeeViewModel>;

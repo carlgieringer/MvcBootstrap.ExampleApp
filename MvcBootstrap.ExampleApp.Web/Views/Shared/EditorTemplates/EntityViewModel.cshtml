@@ -1,6 +1,8 @@
 ﻿@model MvcBootstrap.ViewModels.IEntityViewModel
 @using MvcBootstrap.Reflection
+@using MvcBootstrap.ViewModels
 @using MvcBootstrap.Web.Mvc.Views.Extensions
+@using MvcBootstrap.Extensions
 
 @if (Model == null)
 {
@@ -23,7 +25,7 @@ else
     
     foreach (var propMeta in ViewData.ModelMetadata.Properties.Where(meta => meta.ShouldShow(ViewContext))) 
     { 
-        if (propMeta.HideSurroundingHtml) 
+        if (propMeta.HideSurroundingHtml)
         { 
             @Html.Editor(propMeta.PropertyName) 
         }
@@ -34,7 +36,19 @@ else
                 <div class="controls">
                     @if (propMeta.ShouldEdit())
                     {
-                        @Html.Editor(propMeta.PropertyName)
+                        if (propMeta.Model is IEntityViewModel)
+                        {
+                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModel")
+                        }
+                        else if (propMeta.Model is IEntityViewModelCollection)
+                        //else if (propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(IEntityViewModelCollection<>)))
+                        {
+                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModelCollection", new { CollectionPropertyName = propMeta.PropertyName })
+                        }
+                        else
+                        {
+                            @Html.Editor(propMeta.PropertyName)
+                        }
 
                         if (Model.ConcurrentlyEdited != null)
                         {

@@ -11,13 +11,15 @@
             {
                 Bundles.Bundles.Styles.Bootstrap,
                 Bundles.Bundles.Styles.Site,
+                Bundles.Bundles.Styles.Chosen,
             };
 
         public static readonly BundleInfo[] ScriptInfos = new[]
             {
                 Bundles.Bundles.Scripts.Bootstrap,
                 Bundles.Bundles.Scripts.Modernizr,
-                Bundles.Bundles.Scripts.RespondJs
+                Bundles.Bundles.Scripts.RespondJs,
+                Bundles.Bundles.Scripts.Chosen,
             };
 
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725

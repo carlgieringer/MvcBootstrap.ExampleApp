@@ -21,6 +21,9 @@
             builder.Register(c => new EmployeesRepository(c.Resolve<DbContext>()))
                 .As<IEmployeesRepository>()
                 .InstancePerHttpRequest();
+            builder.Register(c => new RolesRepository(c.Resolve<DbContext>()))
+                .As<IRolesRepository>()
+                .InstancePerHttpRequest();
             var container = builder.Build();
             return new AutofacDependencyResolver(container);
         }

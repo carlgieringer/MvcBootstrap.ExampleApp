@@ -1,0 +1,24 @@
+﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+@model MvcBootstrap.ViewModels.IEntityViewModelCollection
+
+@{
+    string collectionPropertyName = (string)this.ViewData["CollectionPropertyName"];
+}
+
+@if (Model == null)
+{
+    @ViewData.ModelMetadata.NullDisplayText
+}
+else 
+{
+    <text>
+        <select class="entity">
+            @foreach (var option in Model.Choices)
+            {
+                <option value="@option.Id" @(Model.Contains(option) ? @"selected=selected" : "")>
+                    @this.Bootstrap().ViewModelLabelFor(collectionPropertyName, m => option)
+                </option>
+            }
+        </select>
+    </text>
+}

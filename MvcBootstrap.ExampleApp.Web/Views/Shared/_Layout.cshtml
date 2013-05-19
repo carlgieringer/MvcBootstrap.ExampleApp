@@ -17,8 +17,13 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
         
-        @Styles.Render(Bundles.Styles.Bootstrap.Name, Bundles.Styles.Site.Name)
-        @Scripts.Render(Bundles.Scripts.Modernizr.Name, Bundles.Scripts.RespondJs.Name)
+        @Styles.Render(
+            Bundles.Styles.Bootstrap.Name, 
+            Bundles.Styles.Site.Name, 
+            Bundles.Styles.Chosen.Name)
+        @Scripts.Render(
+            Bundles.Scripts.Modernizr.Name, 
+            Bundles.Scripts.RespondJs.Name)
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -38,9 +43,9 @@
                     <a class="brand" href="#">Project name</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li class="active">
+                                @Html.ActionLink("Home", "Index", "Home")
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -87,7 +92,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="Static/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         
-        @Scripts.Render(Bundles.Scripts.Bootstrap.Name)
+        @Scripts.Render(
+            Bundles.Scripts.Bootstrap.Name,
+            Bundles.Scripts.Chosen.Name)
         
         @RenderSection("scripts", required: false)
 

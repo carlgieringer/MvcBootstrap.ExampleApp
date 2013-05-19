@@ -1,0 +1,21 @@
+﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+@model MvcBootstrap.ExampleApp.Web.ViewModels.RoleViewModel
+@{
+    ViewBag.PageTitle = this.EntityActionTitle();
+}
+
+@this.Bootstrap().ReturnLink()
+
+<h1>@ViewBag.PageTitle</h1>
+
+@using (this.Bootstrap().BeginCreateForm())
+{
+    @Html.EditorForModel("EntityViewModel")
+    
+    <div class="control-group">
+        <div class="controls">
+            @this.Bootstrap().SaveSubmit()
+            @this.Bootstrap().CancelLink()
+        </div>
+    </div>
+}

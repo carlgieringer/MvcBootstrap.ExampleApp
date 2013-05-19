@@ -19,7 +19,8 @@
             // Sets up mapping
             var context = new Mock<ExampleAppContext>();
             var repository = new Mock<IEmployeesRepository>();
-            var controller = new EmployeesController(repository.Object);
+            var rolesRepository = new Mock<IRolesRepository>();
+            var controller = new EmployeesController(repository.Object, rolesRepository.Object);
         }
 
         [Test]

@@ -235,8 +235,13 @@
     <Content Include="Static\css\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Static\css\vendor\chosen\chosen-sprite%402x.png" />
+    <Content Include="Static\css\vendor\chosen\chosen-sprite.png" />
+    <Content Include="Static\css\vendor\chosen\chosen.css" />
     <Content Include="Static\js\vendor\bootstrap.js" />
     <Content Include="Static\js\vendor\bootstrap.min.js" />
+    <Content Include="Static\js\vendor\chosen.jquery.js" />
+    <Content Include="Static\js\vendor\chosen.jquery.min.js" />
     <Content Include="Static\js\vendor\jquery-1.9.1.js" />
     <Content Include="Static\js\vendor\jquery-1.9.1.min.js" />
     <Content Include="Static\js\vendor\modernizr-2.6.2.js" />
@@ -289,6 +294,21 @@
       <Project>{27e05ba3-cddf-436f-a072-dfd38f953b30}</Project>
       <Name>MvcBootstrap</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\RelatedEntityViewModelCollection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Roles\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Roles\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Roles\Read.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Roles\Update.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
