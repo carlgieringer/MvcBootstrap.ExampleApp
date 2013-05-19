@@ -48,8 +48,6 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.CreateEntityToViewModelMap<Role, RoleViewModel>();
             this.CreateViewModelToEntityMap<RoleViewModel, Role>();
             this.CreateRelatedEntityCollectionToViewModelCollectionMap<Role, RoleViewModel>();
-            
-            this.ViewModelToEntityMappingExpression.ForMember(e => e.Roles, o => o.Ignore());
         }
     }
 }

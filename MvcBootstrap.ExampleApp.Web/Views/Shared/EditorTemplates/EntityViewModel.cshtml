@@ -40,10 +40,10 @@ else
                         {
                             @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModel")
                         }
-                        else if (propMeta.Model is IEntityViewModelCollection)
+                        else if (propMeta.Model is EntityViewModelCollection)
                         //else if (propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(IEntityViewModelCollection<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModelCollection", new { CollectionPropertyName = propMeta.PropertyName })
+                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModelCollection")
                         }
                         else
                         {
@@ -66,6 +66,8 @@ else
                     {
                         @Html.Display(propMeta.PropertyName)
                     }
+                    
+                    @Html.ValidationMessage(propMeta.PropertyName, new { @class="text-error" })
                 </div>
             </div>
         } 

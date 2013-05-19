@@ -6,11 +6,16 @@
 
     public class EmployeeViewModel : EntityViewModelBase
     {
+        public EmployeeViewModel()
+        {
+            this.Roles = new EntityViewModelCollection();
+        }
+
         public string Name { get; set; }
 
         public string Quest { get; set; }
 
         [HideIn(BootstrapAction.List)]
-        public IEntityViewModelCollection Roles { get; set; }
+        public EntityViewModelCollection Roles { get; set; }
     }
 }

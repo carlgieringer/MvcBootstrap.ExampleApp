@@ -1,8 +1,13 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
-@model MvcBootstrap.ViewModels.IEntityViewModelCollection
+﻿@using MvcBootstrap.Reflection
+@using MvcBootstrap.ViewModels
+@using MvcBootstrap.Web.Mvc.Views.Extensions
+@using TEMTDomain.StaticLib
+@model MvcBootstrap.ViewModels.EntityViewModelCollection
 
 @{
-    string collectionPropertyName = (string)this.ViewData["CollectionPropertyName"];
+    string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
+    string containerName = StringHelper.ConvertDotNotationToSpaceDelimited(this.Html.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix);
+    string fullName = this.Html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
 }
 
 @if (Model == null)
@@ -11,14 +16,23 @@
 }
 else 
 {
+    @*Html.ListBox("Id", new MultiSelectList(Model.Choices, "Id", "Title", Model), new { @class = "related-entity" })*@
+    
     <text>
-        <select class="entity" multiple="multiple">
+        <select name="@fullName" class="related-entity" multiple="multiple" data-placeholder="Select @containerName">
             <option>
             </option>
             @foreach (var option in Model.Choices)
             {
-                <option value="@option.Id" @(Model.Contains(option) ? @"selected=selected" : "")>
-                    @this.Bootstrap().ViewModelLabelFor(collectionPropertyName, m => option)
+                <option 
+                    value="@option.Id" 
+                    @if (Model.Contains(option))
+                    {
+                        <text>
+                            selected="selected"
+                        </text>
+                    }>
+                    @this.Bootstrap().ViewModelLabelFor(containerName, m => option)
                 </option>
             }
         </select>
