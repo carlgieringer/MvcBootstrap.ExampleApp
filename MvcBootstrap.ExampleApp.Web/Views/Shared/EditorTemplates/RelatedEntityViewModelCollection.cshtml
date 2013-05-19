@@ -12,7 +12,9 @@
 else 
 {
     <text>
-        <select class="entity">
+        <select class="entity" multiple="multiple">
+            <option>
+            </option>
             @foreach (var option in Model.Choices)
             {
                 <option value="@option.Id" @(Model.Contains(option) ? @"selected=selected" : "")>
