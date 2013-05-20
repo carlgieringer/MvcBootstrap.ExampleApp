@@ -26,9 +26,13 @@
                 };
             var repository = new Mock<IEmployeesRepository>();
             repository.Setup(r => r.GetById(1)).Returns(() => entity);
+            repository.Setup(r => r.Update(entity)).Returns(() => entity);
             repository.Setup(r => r.SaveChanges()).Throws(new ConcurrentUpdateException(entity));
+
             var rolesRepository = new Mock<IRolesRepository>();
+            
             var controller = new EmployeesController(repository.Object, rolesRepository.Object);
+            
             var viewModel = new EmployeeViewModel
                 {
                     Id = 1,

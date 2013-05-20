@@ -8,7 +8,7 @@
     {
         public EmployeeViewModel()
         {
-            this.Roles = new EntityViewModelCollection();
+            this.Roles = new ChoiceCollection<RoleViewModel>();
         }
 
         public string Name { get; set; }
@@ -16,6 +16,11 @@
         public string Quest { get; set; }
 
         [HideIn(BootstrapAction.List)]
-        public EntityViewModelCollection Roles { get; set; }
+        public ChoiceCollection<RoleViewModel> Roles { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

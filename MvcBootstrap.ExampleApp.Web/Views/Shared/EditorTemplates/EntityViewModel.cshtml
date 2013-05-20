@@ -14,15 +14,6 @@ else if (ViewData.TemplateInfo.TemplateDepth > 1)
 }
 else 
 {
-    if (Model.ConcurrentlyEdited != null)
-    {
-        <text>
-            <div class="text-error">
-                Another edit occurred since you requested the page.  Please ensure the correct values are below.  Cancel to leave the new current values.
-            </div>
-        </text>
-    }
-    
     foreach (var propMeta in ViewData.ModelMetadata.Properties.Where(meta => meta.ShouldShow(ViewContext))) 
     { 
         if (propMeta.HideSurroundingHtml)
@@ -40,10 +31,11 @@ else
                         {
                             @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModel")
                         }
-                        else if (propMeta.Model is EntityViewModelCollection)
-                        //else if (propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(IEntityViewModelCollection<>)))
+                        else if (
+                            propMeta.Model != null &&
+                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(ChoiceCollection<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModelCollection")
+                            @Html.Editor(propMeta.PropertyName, "RelatedChoiceCollection")
                         }
                         else
                         {
@@ -54,12 +46,15 @@ else
                         {
                             var enteredValue = ReflectionHelper.GetProperty(Model, propMeta.PropertyName);
                             var currentValue = ReflectionHelper.GetProperty(Model.ConcurrentlyEdited, propMeta.PropertyName);
-                            if (enteredValue != currentValue)
-                            {
-                                <span class="text-error">
-                                    Current Value: @currentValue
-                                </span>
-                            }
+                            bool sameValue = 
+                                // Usually null is not considered to be equal to itself, but in the case of 'same value entered for property' it is.
+                                enteredValue == null && currentValue == null || 
+                                enteredValue != null && enteredValue.Equals(currentValue);
+                            
+                            <span class="muted">Current Value:</span>
+                            <span class="@(sameValue ? "text-info" : "text-error")">
+                                @currentValue
+                            </span>
                         }
                     }
                     else

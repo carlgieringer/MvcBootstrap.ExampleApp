@@ -9,10 +9,7 @@
 
 namespace MvcBootstrap.ExampleApp.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Web.Security;
-
-    using AutoMapper;
+    using System.Linq;
 
     using MvcBootstrap.ExampleApp.Data.Repositories;
     using MvcBootstrap.ExampleApp.Domain.Models;
@@ -37,17 +34,26 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             : base(repository)
         {
             this.Config.Sort = Sort.By(e => e.Name).ThenBy(e => e.Id);
-            // TODO why do we need a label for an entity?  ViewModels are the things that are shown to the user.
             this.Config.EntityLabelSelector = e => e.Name;
             this.Config.ViewModelLabelSelector = vm => vm.Name;
             this.Config.RelatedEntities()
-                .For(e => e.Roles)
-                .UseSource(e => rolesRepository.Items)
-                .WithLabel<RoleViewModel>(r => r.Title);
+                .Relation(e => e.Roles)
+                .HasChoices(e => rolesRepository.Items)
+                .UsesLabel<RoleViewModel>(r => r.Title);
 
-            this.CreateEntityToViewModelMap<Role, RoleViewModel>();
-            this.CreateViewModelToEntityMap<RoleViewModel, Role>();
-            this.CreateRelatedEntityCollectionToViewModelCollectionMap<Role, RoleViewModel>();
+            /* 
+             * TODO this could probably all be automated by reflecting on which members with the same name (or which would map to each other)
+             * are IEntity/IEnumerable<IEntity> (on Employee) and 
+             * IEntityViewModel/IEnumerable<IEntityViewModel>/ChoiceCollection (on EmployeeViewModel)
+             */
+
+            this.CreateEntityToViewModelMap<Role, RoleViewModel>()
+                // Don't map the related Employees, because that begins an infinite cycle
+                .ForMember(vm => vm.Employees, o => o.Ignore());
+            this.CreateViewModelToEntityMap<RoleViewModel, Role>()
+                .ForMember(r => r.Employees, o => o.Ignore());
+            this.CreateRelatedEntityCollectionToChoiceCollectionMap<Role, RoleViewModel>();
+            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>();
         }
     }
 }

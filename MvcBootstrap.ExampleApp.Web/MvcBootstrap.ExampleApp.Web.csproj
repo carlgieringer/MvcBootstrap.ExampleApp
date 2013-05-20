@@ -224,6 +224,7 @@
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Static\css\asp.net-mvc.css" />
     <Content Include="Static\css\bootstrap-between.css" />
     <Content Include="Static\css\mvc-bootstrap.css" />
     <Content Include="Static\css\vendor\bootstrap\css\bootstrap-responsive.css" />
@@ -296,7 +297,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\RelatedEntityViewModelCollection.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RelatedChoiceCollection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Roles\Create.cshtml" />

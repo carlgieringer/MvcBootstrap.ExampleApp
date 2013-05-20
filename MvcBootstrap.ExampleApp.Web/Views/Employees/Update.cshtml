@@ -1,14 +1,17 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Extensions
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
 @{
     ViewBag.Title = this.EntityActionTitle();
+    var validationSummaryHtml = Html.ValidationSummary(false, "Error(s) saving Employee:", new { @class = "text-error" }).ToHtmlString();
 }
 
 @this.Bootstrap().ReturnLink()
 
 <h1>@ViewBag.Title</h1>
 
-@Html.ValidationSummary()
+@* Allow us to output HTML in our messages; MUST be sure to escape any parts of the message that come from user input *@
+@Html.Raw(HttpUtility.HtmlDecode(validationSummaryHtml))
 
 @using (this.Bootstrap().BeginUpdateForm())
 {

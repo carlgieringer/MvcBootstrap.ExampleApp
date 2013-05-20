@@ -8,6 +8,8 @@
 
 <h1>@ViewBag.Title</h1>
 
+@Html.ValidationSummary(false, "Error(s) creating Employee:", new { @class = "text-error" } )
+
 @using (this.Bootstrap().BeginCreateForm())
 {
     @Html.EditorForModel("EntityViewModel")

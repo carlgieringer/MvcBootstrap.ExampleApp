@@ -11,6 +11,11 @@
         public string Title { get; set; }
 
         [HideIn(BootstrapAction.List)]
-        public ICollection<EmployeeViewModel> Employees { get; set; } 
+        public ICollection<EmployeeViewModel> Employees { get; set; }
+
+        public override string ToString()
+        {
+            return this.Title;
+        }
     }
 }

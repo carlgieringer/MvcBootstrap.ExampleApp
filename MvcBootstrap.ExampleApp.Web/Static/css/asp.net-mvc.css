@@ -1,0 +1,12 @@
+﻿/*
+ * Styles for modifying built-in ASP.NET MVC elements and classes
+ */
+
+/*
+ * ASP.NET MVC 4 displays the message of Html.ValidationSummary(_, message) whether
+ * the model is invalid or not.  But when valid, it adds the class .validation-summary-valid
+ * Since we only want this message to appear when invalid, hide this class.   
+ */
+.validation-summary-valid {
+     display:none;
+}

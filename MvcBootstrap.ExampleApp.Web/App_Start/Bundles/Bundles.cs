@@ -15,6 +15,13 @@
                     "~/Static/css/styles.css",
                 });
 
+            public static readonly BundleInfo Mvc = new BundleInfo(
+                "~/css/mvc",
+                new[]
+                {
+                    "~/Static/css/asp.net-mvc.css",
+                });
+
             public static readonly BundleInfo Bootstrap = new BundleInfo(
                 "~/css/bootstrap",
                 new[]

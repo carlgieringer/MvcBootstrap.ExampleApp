@@ -2,7 +2,7 @@
 @using MvcBootstrap.ViewModels
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 @using TEMTDomain.StaticLib
-@model MvcBootstrap.ViewModels.EntityViewModelCollection
+@model MvcBootstrap.ViewModels.IChoiceCollection
 
 @{
     string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
@@ -26,7 +26,7 @@ else
             {
                 <option 
                     value="@option.Id" 
-                    @if (Model.Contains(option))
+                    @if (Model.Any(vm => vm.Id == option.Id))
                     {
                         <text>
                             selected="selected"

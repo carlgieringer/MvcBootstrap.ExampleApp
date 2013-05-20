@@ -7,6 +7,7 @@
     using System.Web.Routing;
 
     using MvcBootstrap.ExampleApp.Web.App_Start;
+    using MvcBootstrap.Web.Mvc.ModelBinding;
     using MvcBootstrap.Web.Mvc.ModelMetadata;
 
     public class MvcApplication : HttpApplication
@@ -15,8 +16,7 @@
         {
             DependencyResolver.SetResolver(DependencyInjectionConfig.CreateResolver());
             ModelMetadataProviders.Current = new BootstrapModelMetadataProvider();
-
-            //ModelBinders.Binders.DefaultBinder = new MvcBootstrapModelBinder();
+            ModelBinders.Binders.DefaultBinder = new MvcBootstrapModelBinder();
 
             AreaRegistration.RegisterAllAreas();
 
