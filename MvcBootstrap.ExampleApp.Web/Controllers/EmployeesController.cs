@@ -10,7 +10,9 @@
 namespace MvcBootstrap.ExampleApp.Web.Controllers
 {
     using System.Linq;
+    using System.Web.Mvc;
 
+    using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Data.Repositories;
     using MvcBootstrap.ExampleApp.Domain.Models;
     using MvcBootstrap.ExampleApp.Web.ViewModels;
@@ -52,8 +54,10 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
                 .ForMember(vm => vm.Employees, o => o.Ignore());
             this.CreateViewModelToEntityMap<RoleViewModel, Role>()
                 .ForMember(r => r.Employees, o => o.Ignore());
+
+            var roleRepository = DependencyResolver.Current.GetService<IBootstrapRepository<Role>>();
             this.CreateRelatedEntityCollectionToChoiceCollectionMap<Role, RoleViewModel>();
-            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>();
+            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>(roleRepository);
         }
     }
 }
