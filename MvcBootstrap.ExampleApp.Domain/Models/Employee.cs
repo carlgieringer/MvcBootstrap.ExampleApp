@@ -13,5 +13,7 @@
         public virtual string Quest { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
+
+        public virtual Employee Supervisor { get; set; }
     }
 }

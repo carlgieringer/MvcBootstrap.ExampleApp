@@ -1,0 +1,45 @@
+﻿@using MvcBootstrap.Reflection
+@using MvcBootstrap.ViewModels
+@using MvcBootstrap.Web.Mvc.Views.Extensions
+@using TEMTDomain.StaticLib
+@model MvcBootstrap.ViewModels.IChoice<IEntityViewModel>
+
+@{
+    string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
+    string containerName = StringHelper.ConvertDotNotationToSpaceDelimited(this.Html.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix);
+    string fullName = this.Html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+}
+
+@if (Model == null)
+{
+    @ViewData.ModelMetadata.NullDisplayText
+}
+else 
+{
+    <text>
+        <select name="@fullName" class="related-entity" data-placeholder="Select @containerName">
+            @if (!ViewData.ModelMetadata.IsRequired)
+            {
+                <option>
+                    <!-- empty option -->
+                </option>
+            }
+            @foreach (var option in Model.Options)
+            {
+                <option 
+                    value="@option.Id" 
+                    @if (
+                        Model != null && 
+                        Model.Selection != null && 
+                        Model.Selection.Id == option.Id)
+                    {
+                        <text>
+                            selected="selected"
+                        </text>
+                    }>
+                    @this.Bootstrap().ViewModelLabelFor(containerName, m => option)
+                </option>
+            }
+        </select>
+    </text>
+}

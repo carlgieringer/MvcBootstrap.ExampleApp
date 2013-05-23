@@ -6,6 +6,11 @@
 
     public class ExampleAppContext : DbContext
     {
+        public ExampleAppContext()
+            : base("MvcBootstrap.ExampleApp.Data.ExampleAppContext")
+        {
+        }
+
         public ExampleAppContext(string connectionString)
             : base(connectionString)
         {

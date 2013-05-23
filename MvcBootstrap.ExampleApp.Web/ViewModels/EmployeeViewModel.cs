@@ -8,15 +8,18 @@
     {
         public EmployeeViewModel()
         {
-            this.Roles = new ChoiceCollection<RoleViewModel>();
+            this.Roles = new Choices<RoleViewModel>();
+            this.Supervisor = new Choice<EmployeeViewModel>();
         }
 
         public string Name { get; set; }
 
         public string Quest { get; set; }
 
+        public Choice<EmployeeViewModel> Supervisor { get; set; }
+
         [HideIn(BootstrapAction.List)]
-        public ChoiceCollection<RoleViewModel> Roles { get; set; }
+        public Choices<RoleViewModel> Roles { get; set; }
 
         public override string ToString()
         {

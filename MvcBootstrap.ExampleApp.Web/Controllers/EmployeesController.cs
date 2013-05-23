@@ -41,7 +41,11 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.Config.RelatedEntities()
                 .Relation(e => e.Roles)
                 .HasChoices(e => rolesRepository.Items)
-                .UsesLabel<RoleViewModel>(r => r.Title);
+                .UsesLabel<RoleViewModel>(vm => vm.Title);
+            this.Config.RelatedEntities()
+                .Relation(e => e.Supervisor)
+                .HasChoices(e => repository.Items)
+                .UsesLabel<EmployeeViewModel>(vm => vm.Name);
 
             /* 
              * TODO this could probably all be automated by reflecting on which members with the same name (or which would map to each other)
@@ -49,15 +53,19 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
              * IEntityViewModel/IEnumerable<IEntityViewModel>/ChoiceCollection (on EmployeeViewModel)
              */
 
+            //this.ViewModelToEntityMappingExpression.ForMember(e => e.Supervisor, o => o.)
+
             this.CreateEntityToViewModelMap<Role, RoleViewModel>()
-                // Don't map the related Employees, because that begins an infinite cycle
+                // Don't map a roles Employees, because that begins an infinite cycle/stack overflow
                 .ForMember(vm => vm.Employees, o => o.Ignore());
             this.CreateViewModelToEntityMap<RoleViewModel, Role>()
                 .ForMember(r => r.Employees, o => o.Ignore());
 
-            var roleRepository = DependencyResolver.Current.GetService<IBootstrapRepository<Role>>();
             this.CreateRelatedEntityCollectionToChoiceCollectionMap<Role, RoleViewModel>();
-            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>(roleRepository);
+            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>(rolesRepository);
+
+            this.CreateRelatedEntityToChoiceMap<Employee, EmployeeViewModel>();
+            this.CreateChoiceToEntityMap<EmployeeViewModel, Employee>(this.Repository);
         }
     }
 }

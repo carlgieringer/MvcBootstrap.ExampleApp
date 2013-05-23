@@ -27,15 +27,16 @@ else
                 <div class="controls">
                     @if (propMeta.ShouldEdit())
                     {
-                        if (propMeta.Model is IEntityViewModel)
+                        if (propMeta.Model != null &&
+                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choice<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedEntityViewModel")
+                            @Html.Editor(propMeta.PropertyName, "RelatedChoice")
                         }
                         else if (
                             propMeta.Model != null &&
-                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(ChoiceCollection<>)))
+                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choices<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedChoiceCollection")
+                            @Html.Editor(propMeta.PropertyName, "RelatedChoices")
                         }
                         else
                         {

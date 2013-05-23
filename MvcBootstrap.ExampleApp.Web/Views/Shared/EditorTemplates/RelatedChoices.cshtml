@@ -2,7 +2,7 @@
 @using MvcBootstrap.ViewModels
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 @using TEMTDomain.StaticLib
-@model MvcBootstrap.ViewModels.IChoiceCollection
+@model MvcBootstrap.ViewModels.IChoices<IEntityViewModel>
 
 @{
     string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
@@ -16,17 +16,16 @@
 }
 else 
 {
-    @*Html.ListBox("Id", new MultiSelectList(Model.Choices, "Id", "Title", Model), new { @class = "related-entity" })*@
-    
     <text>
         <select name="@fullName" class="related-entity" multiple="multiple" data-placeholder="Select @containerName">
             <option>
+                <!-- empty option -->
             </option>
-            @foreach (var option in Model.Choices)
+            @foreach (var option in Model.Options)
             {
                 <option 
                     value="@option.Id" 
-                    @if (Model.Any(vm => vm.Id == option.Id))
+                    @if (Model.Selections.Any(vm => vm.Id == option.Id))
                     {
                         <text>
                             selected="selected"

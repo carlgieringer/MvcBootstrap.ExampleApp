@@ -297,7 +297,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\RelatedChoiceCollection.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RelatedChoices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Roles\Create.cshtml" />
@@ -310,6 +310,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Roles\Update.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\RelatedChoice.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
