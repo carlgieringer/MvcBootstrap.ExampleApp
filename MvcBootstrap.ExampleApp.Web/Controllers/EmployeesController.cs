@@ -61,10 +61,11 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.CreateViewModelToEntityMap<RoleViewModel, Role>()
                 .ForMember(r => r.Employees, o => o.Ignore());
 
-            this.CreateRelatedEntityCollectionToChoiceCollectionMap<Role, RoleViewModel>();
-            this.CreateChoiceCollectionToEntityCollectionMap<RoleViewModel, Role>(rolesRepository);
+            this.CreateRelatedEntitiesToChoicesMap<Role, RoleViewModel>();
+            this.CreateChoicesToEntitiesMap<RoleViewModel, Role>(rolesRepository);
 
-            this.CreateRelatedEntityToChoiceMap<Employee, EmployeeViewModel>();
+            this.CreateRelatedEntityToChoiceMap<Employee, EmployeeViewModel>()
+                .MaxDepth(10);
             this.CreateChoiceToEntityMap<EmployeeViewModel, Employee>(this.Repository);
         }
     }
