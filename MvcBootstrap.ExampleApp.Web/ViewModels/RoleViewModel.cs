@@ -1,6 +1,7 @@
 ﻿namespace MvcBootstrap.ExampleApp.Web.ViewModels
 {
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     using MvcBootstrap.ViewModels;
     using MvcBootstrap.ViewModels.Attributes;
@@ -8,10 +9,15 @@
 
     public class RoleViewModel : EntityViewModelBase
     {
+        public RoleViewModel()
+        {
+            this.Employees = new Collection<EmployeeOption>();
+        }
+
         public string Title { get; set; }
 
         [HideIn(BootstrapAction.List)]
-        public ICollection<EmployeeViewModel> Employees { get; set; }
+        public ICollection<EmployeeOption> Employees { get; set; }
 
         public override string ToString()
         {

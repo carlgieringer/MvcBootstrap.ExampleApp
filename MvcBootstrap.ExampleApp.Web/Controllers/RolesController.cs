@@ -10,8 +10,8 @@
         public RolesController(IRolesRepository repository)
             : base(repository)
         {
-            this.CreateEntityToViewModelMap<Employee, EmployeeViewModel>();
-            this.CreateViewModelToEntityMap<EmployeeViewModel, Employee>();
+            this.MappingCreator.CreateEntityToViewModelMap<Employee, EmployeeViewModel>();
+            this.MappingCreator.CreateViewModelToEntityMap<EmployeeViewModel, Employee>();
         }
     }
 }

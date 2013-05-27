@@ -9,10 +9,8 @@
 
 namespace MvcBootstrap.ExampleApp.Web.Controllers
 {
-    using System.Linq;
-    using System.Web.Mvc;
+    using AutoMapper;
 
-    using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Data.Repositories;
     using MvcBootstrap.ExampleApp.Domain.Models;
     using MvcBootstrap.ExampleApp.Web.ViewModels;
@@ -38,14 +36,13 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.Config.Sort = Sort.By(e => e.Name).ThenBy(e => e.Id);
             this.Config.EntityLabelSelector = e => e.Name;
             this.Config.ViewModelLabelSelector = vm => vm.Name;
-            this.Config.RelatedEntities()
-                .Relation(e => e.Roles)
-                .HasChoices(e => rolesRepository.Items)
-                .UsesLabel<RoleViewModel>(vm => vm.Title);
-            this.Config.RelatedEntities()
-                .Relation(e => e.Supervisor)
-                .HasChoices(e => repository.Items)
-                .UsesLabel<EmployeeViewModel>(vm => vm.Name);
+            this.Config.Relation(e => e.Roles)
+                .HasOptions(e => rolesRepository.Items)
+                .UsesLabel<RoleOption>(vm => vm.Title);
+            this.Config.Relation(e => e.Supervisor)
+                .HasOptions(e => repository.Items)
+                .UsesLabel<EmployeeOption>(vm => vm.Name)
+                .CanChooseSelf(false);
 
             /* 
              * TODO this could probably all be automated by reflecting on which members with the same name (or which would map to each other)
@@ -53,20 +50,19 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
              * IEntityViewModel/IEnumerable<IEntityViewModel>/ChoiceCollection (on EmployeeViewModel)
              */
 
-            //this.ViewModelToEntityMappingExpression.ForMember(e => e.Supervisor, o => o.)
+            Mapper.CreateMap<Employee, EmployeeOption>();
+            Mapper.CreateMap<EmployeeOption, Employee>();
+            Mapper.CreateMap<Role, RoleOption>();
+            Mapper.CreateMap<RoleOption, Role>();
 
-            this.CreateEntityToViewModelMap<Role, RoleViewModel>()
-                // Don't map a roles Employees, because that begins an infinite cycle/stack overflow
-                .ForMember(vm => vm.Employees, o => o.Ignore());
-            this.CreateViewModelToEntityMap<RoleViewModel, Role>()
-                .ForMember(r => r.Employees, o => o.Ignore());
+            this.MappingCreator.CreateEntityToViewModelMap<Role, RoleViewModel>();
+            this.MappingCreator.CreateViewModelToEntityMap<RoleViewModel, Role>();
 
-            this.CreateRelatedEntitiesToChoicesMap<Role, RoleViewModel>();
-            this.CreateChoicesToEntitiesMap<RoleViewModel, Role>(rolesRepository);
+            this.MappingCreator.CreateEntitiesToChoicesMap<Role, RoleOption>();
+            this.MappingCreator.CreateChoicesToEntitiesMap<RoleOption, Role>(rolesRepository);
 
-            this.CreateRelatedEntityToChoiceMap<Employee, EmployeeViewModel>()
-                .MaxDepth(10);
-            this.CreateChoiceToEntityMap<EmployeeViewModel, Employee>(this.Repository);
+            this.MappingCreator.CreateEntityToChoiceMap<Employee, EmployeeOption>();
+            this.MappingCreator.CreateChoiceToEntityMap<EmployeeOption, Employee>(this.Repository);
         }
     }
 }

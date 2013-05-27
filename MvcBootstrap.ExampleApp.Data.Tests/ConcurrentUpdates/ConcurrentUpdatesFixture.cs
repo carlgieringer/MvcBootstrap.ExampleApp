@@ -1,6 +1,5 @@
 ﻿namespace MvcBootstrap.ExampleApp.Data.Tests.ConcurrentUpdates
 {
-    using System.Data.Entity.Infrastructure;
     using System.Linq;
 
     using MvcBootstrap.Data;
@@ -24,6 +23,7 @@
 
             var employee = repository.Create();
             employee.Name = "Fred";
+
             repository.Add(employee);
             repository.SaveChanges();
         }
@@ -31,6 +31,8 @@
         [Test]
         public void ConcurrentUpdateThrowsException()
         {
+            //// Arrange
+            
             var repository1 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests"));
             var employee1 = repository1.Items.Single(e => e.Name == "Fred");
 
@@ -45,6 +47,9 @@
 
             employee2.Name = "Barney";
             repository2.Update(employee2);
+
+            //// Act and Assert
+
             Assert.That(() => repository2.SaveChanges(), Throws.InstanceOf<ConcurrentUpdateException>());
         }
     }

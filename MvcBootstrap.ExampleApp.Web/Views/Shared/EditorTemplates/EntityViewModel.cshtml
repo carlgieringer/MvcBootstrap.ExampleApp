@@ -30,13 +30,13 @@ else
                         if (propMeta.Model != null &&
                             propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choice<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedChoice")
+                            @Html.Editor(propMeta.PropertyName, "Choice")
                         }
                         else if (
                             propMeta.Model != null &&
                             propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choices<>)))
                         {
-                            @Html.Editor(propMeta.PropertyName, "RelatedChoices")
+                            @Html.Editor(propMeta.PropertyName, "Choices")
                         }
                         else
                         {

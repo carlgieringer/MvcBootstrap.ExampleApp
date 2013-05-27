@@ -214,6 +214,8 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="ViewModels\EmployeeOption.cs" />
+    <Compile Include="ViewModels\RoleOption.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,7 +299,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\RelatedChoices.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Choices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Roles\Create.cshtml" />
@@ -312,7 +314,7 @@
     <Content Include="Views\Roles\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\RelatedChoice.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Choice.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,7 +2,7 @@
 @using MvcBootstrap.ViewModels
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 @using TEMTDomain.StaticLib
-@model MvcBootstrap.ViewModels.IChoice<IEntityViewModel>
+@model IChoices<IEntityViewModel>
 
 @{
     string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
@@ -17,21 +17,15 @@
 else 
 {
     <text>
-        <select name="@fullName" class="related-entity" data-placeholder="Select @containerName">
-            @if (!ViewData.ModelMetadata.IsRequired)
-            {
-                <option>
-                    <!-- empty option -->
-                </option>
-            }
+        <select name="@fullName" class="related-entity" multiple="multiple" data-placeholder="Select @containerName">
+            <option>
+                <!-- empty option -->
+            </option>
             @foreach (var option in Model.Options)
             {
                 <option 
                     value="@option.Id" 
-                    @if (
-                        Model != null && 
-                        Model.Selection != null && 
-                        Model.Selection.Id == option.Id)
+                    @if (Model.Selections.Any(vm => vm.Id == option.Id))
                     {
                         <text>
                             selected="selected"

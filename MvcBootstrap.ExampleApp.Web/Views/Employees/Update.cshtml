@@ -29,7 +29,9 @@
 {
     <script>
         jQuery(function($) {
-            $('select.related-entity').chosen();
+            $('select.related-entity').chosen({
+                allow_single_deselect: true
+            });
         })
     </script>
 }
