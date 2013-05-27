@@ -50,19 +50,15 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
              * IEntityViewModel/IEnumerable<IEntityViewModel>/ChoiceCollection (on EmployeeViewModel)
              */
 
+            this.MappingCreator.CreateEntityToChoiceMap<Employee, EmployeeOption>();
+            this.MappingCreator.CreateChoiceToEntityMap<EmployeeOption, Employee>(this.Repository);
             Mapper.CreateMap<Employee, EmployeeOption>();
             Mapper.CreateMap<EmployeeOption, Employee>();
-            Mapper.CreateMap<Role, RoleOption>();
-            Mapper.CreateMap<RoleOption, Role>();
-
-            this.MappingCreator.CreateEntityToViewModelMap<Role, RoleViewModel>();
-            this.MappingCreator.CreateViewModelToEntityMap<RoleViewModel, Role>();
 
             this.MappingCreator.CreateEntitiesToChoicesMap<Role, RoleOption>();
             this.MappingCreator.CreateChoicesToEntitiesMap<RoleOption, Role>(rolesRepository);
-
-            this.MappingCreator.CreateEntityToChoiceMap<Employee, EmployeeOption>();
-            this.MappingCreator.CreateChoiceToEntityMap<EmployeeOption, Employee>(this.Repository);
+            Mapper.CreateMap<Role, RoleOption>();
+            Mapper.CreateMap<RoleOption, Role>();
         }
     }
 }
