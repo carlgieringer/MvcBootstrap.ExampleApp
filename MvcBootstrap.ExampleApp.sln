@@ -32,6 +32,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{548E8DB8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBootstrap.Tests", "MvcBootstrap\MvcBootstrap.Tests\MvcBootstrap.Tests.csproj", "{A4037E13-E3BB-4909-AF5C-6E6227B43B48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MvcBootstrap", "MvcBootstrap", "{2899458F-5ACA-4657-86B0-E164C14FA65E}"
+	ProjectSection(SolutionItems) = preProject
+		MvcBootstrap\LICENSE.md = MvcBootstrap\LICENSE.md
+		MvcBootstrap\README.md = MvcBootstrap\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,9 +81,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E037691F-7BFB-489D-A18A-028D9021DAC6} = {548E8DB8-2A0F-428F-93AE-1B44E2292AF9}
 		{542042B1-4E46-4B8E-AA2B-B794D3A6C1D7} = {548E8DB8-2A0F-428F-93AE-1B44E2292AF9}
+		{E037691F-7BFB-489D-A18A-028D9021DAC6} = {548E8DB8-2A0F-428F-93AE-1B44E2292AF9}
 		{4BB7D3AF-5CA9-4391-B781-F784D206AADF} = {548E8DB8-2A0F-428F-93AE-1B44E2292AF9}
 		{A4037E13-E3BB-4909-AF5C-6E6227B43B48} = {548E8DB8-2A0F-428F-93AE-1B44E2292AF9}
+		{2899458F-5ACA-4657-86B0-E164C14FA65E} = {93DD07D1-1879-404D-B45F-E949E0537391}
 	EndGlobalSection
 EndGlobal
