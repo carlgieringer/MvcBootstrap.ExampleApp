@@ -33,7 +33,7 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
         public EmployeesController(IEmployeesRepository repository, IRolesRepository rolesRepository)
             : base(repository)
         {
-            this.Config.Sort = Sort.By(e => e.Name).ThenBy(e => e.Id);
+            this.Config.Sort = Sort.By(e => e.Name).ThenBy(e => e.Created);
             this.Config.EntityLabelSelector = e => e.Name;
             this.Config.ViewModelLabelSelector = vm => vm.Name;
             this.Config.Relation(e => e.Roles)
@@ -43,22 +43,6 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
                 .HasOptions(e => repository.Items)
                 .UsesLabel<EmployeeOption>(vm => vm.Name)
                 .CanChooseSelf(false);
-
-            /* 
-             * TODO this could probably all be automated by reflecting on which members with the same name (or which would map to each other)
-             * are IEntity/IEnumerable<IEntity> (on Employee) and 
-             * IEntityViewModel/IEnumerable<IEntityViewModel>/ChoiceCollection (on EmployeeViewModel)
-             */
-
-            this.MappingCreator.CreateEntityToChoiceMap<Employee, EmployeeOption>();
-            this.MappingCreator.CreateChoiceToEntityMap<EmployeeOption, Employee>(this.Repository);
-            Mapper.CreateMap<Employee, EmployeeOption>();
-            Mapper.CreateMap<EmployeeOption, Employee>();
-
-            this.MappingCreator.CreateEntitiesToChoicesMap<Role, RoleOption>();
-            this.MappingCreator.CreateChoicesToEntitiesMap<RoleOption, Role>(rolesRepository);
-            Mapper.CreateMap<Role, RoleOption>();
-            Mapper.CreateMap<RoleOption, Role>();
         }
     }
 }

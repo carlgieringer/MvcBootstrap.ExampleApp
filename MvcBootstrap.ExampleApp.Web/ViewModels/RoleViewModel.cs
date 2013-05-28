@@ -11,13 +11,13 @@
     {
         public RoleViewModel()
         {
-            this.Employees = new Collection<EmployeeOption>();
+            this.Employees = new Choices<EmployeeOption>();
         }
 
         public string Title { get; set; }
 
         [HideIn(BootstrapAction.List)]
-        public ICollection<EmployeeOption> Employees { get; set; }
+        public Choices<EmployeeOption> Employees { get; set; }
 
         public override string ToString()
         {

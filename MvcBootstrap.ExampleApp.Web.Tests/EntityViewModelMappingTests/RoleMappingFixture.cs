@@ -4,8 +4,10 @@
 
     using Moq;
 
+    using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Data;
     using MvcBootstrap.ExampleApp.Data.Repositories;
+    using MvcBootstrap.ExampleApp.Domain.Models;
     using MvcBootstrap.ExampleApp.Web.Controllers;
 
     using NUnit.Framework;
@@ -19,7 +21,8 @@
             // Sets up mapping
             var context = new Mock<ExampleAppContext>();
             var repository = new Mock<IRolesRepository>();
-            var controller = new RolesController(repository.Object);
+            var employeesRepository = new Mock<IBootstrapRepository<Employee>>();
+            var controller = new RolesController(repository.Object, employeesRepository.Object);
         }
 
         [Test]
