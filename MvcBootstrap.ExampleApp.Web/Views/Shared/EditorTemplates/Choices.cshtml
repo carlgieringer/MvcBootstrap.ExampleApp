@@ -6,8 +6,8 @@
 
 @{
     string name = Of<IEntityViewModel>.CodeNameFor(vm => vm.Id);
-    string containerName = StringHelper.ConvertDotNotationToSpaceDelimited(this.Html.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix);
     string fullName = this.Html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+    string containerName = StringHelper.ConvertDotNotationToSpaceDelimited(this.Html.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix);
 }
 
 @if (Model == null)
