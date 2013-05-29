@@ -10,6 +10,8 @@
 
 @using (this.Bootstrap().BeginUpdateForm())
 {
+    @Html.AntiForgeryToken()
+
     @Html.EditorForModel("EntityViewModel")
     
     <div class="control-group">
