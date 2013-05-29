@@ -1,37 +1,18 @@
-﻿@model MvcBootstrap.ViewModels.Accounts.RegisterModel
+﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+@model MvcBootstrap.ViewModels.Accounts.RegisterModel
 @{
     ViewBag.Title = "Register";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
+<h1>@ViewBag.Title</h1>
 
-@using (Html.BeginForm()) {
+@using (this.Bootstrap().BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <text>
+        @this.Bootstrap().ValidationSummary("There were errors with your registration:")
+        @this.Bootstrap().TextBoxGroupFor(m => m.Username)
+        @this.Bootstrap().TextBoxGroupFor(m => m.Password)
+        @this.Bootstrap().TextBoxGroupFor(m => m.ConfirmPassword)
+        @this.Bootstrap().SubmitGroup("Register")
+    </text>
 }
