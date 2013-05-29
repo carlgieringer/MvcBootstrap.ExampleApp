@@ -1,5 +1,7 @@
 ﻿namespace MvcBootstrap.ExampleApp.Web.App_Start
 {
+    using Microsoft.Web.WebPages.OAuth;
+
     public static class AuthConfig
     {
         public static void RegisterAuth()
@@ -19,7 +21,7 @@
             //    appId: "",
             //    appSecret: "");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }

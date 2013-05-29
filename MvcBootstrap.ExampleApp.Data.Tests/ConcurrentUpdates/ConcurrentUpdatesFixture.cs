@@ -21,10 +21,9 @@
 
             var repository = new EmployeesRepository(context);
 
-            var employee = repository.Create();
+            var employee = repository.CreateAndAdd();
             employee.Name = "Fred";
 
-            repository.Add(employee);
             repository.SaveChanges();
         }
 
@@ -34,10 +33,10 @@
             //// Arrange
             
             var repository1 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests"));
-            var employee1 = repository1.Items.Single(e => e.Name == "Fred");
+            var employee1 = repository1.GetByName("Fred");
 
             var repository2 = new EmployeesRepository(new ExampleAppContext("MvcBootstrap.ExampleApp.Data.Tests"));
-            var employee2 = repository2.Items.Single(e => e.Name == "Fred");
+            var employee2 = repository2.GetByName("Fred");
 
             Assert.That(employee1.Id, Is.EqualTo(employee2.Id));
 

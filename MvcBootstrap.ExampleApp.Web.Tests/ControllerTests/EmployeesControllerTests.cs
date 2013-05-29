@@ -32,7 +32,7 @@
                 };
 
             var repository = new Mock<IEmployeesRepository>();
-            repository.Setup(r => r.Items).Returns(employees.AsQueryable());
+            repository.Setup(r => r.GetAll()).Returns(employees);
             var rolesRepository = new Mock<IRolesRepository>();
 
             var controller = new EmployeesController(repository.Object, rolesRepository.Object);
@@ -95,7 +95,7 @@
                 };
 
             var repository = new Mock<IEmployeesRepository>();
-            repository.Setup(r => r.Items).Returns(employees.AsQueryable());
+            repository.Setup(r => r.GetAll()).Returns(employees);
             var rolesRepository = new Mock<IRolesRepository>();
 
             var controller = new EmployeesController(repository.Object, rolesRepository.Object);

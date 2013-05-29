@@ -19,7 +19,7 @@
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             
-            builder.Register(c => new ExampleAppContext("MvcBootstrap.ExampleApp.Data.ExampleAppContext"))
+            builder.Register(c => new ExampleAppContext(ExampleAppContext.ConnectionStringName))
                 .As<DbContext>()
                 .InstancePerHttpRequest();
             
@@ -31,6 +31,11 @@
             builder.Register(c => new RolesRepository(c.Resolve<DbContext>()))
                 .As<IBootstrapRepository<Role>>()
                 .As<IRolesRepository>()
+                .InstancePerHttpRequest();
+
+            builder.Register(c => new UserProfileRepository(c.Resolve<DbContext>()))
+                .As<IBootstrapRepository<UserProfile>>()
+                .As<IUserProfileRepository<UserProfile>>()
                 .InstancePerHttpRequest();
             
             var container = builder.Build();

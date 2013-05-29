@@ -37,10 +37,10 @@ namespace MvcBootstrap.ExampleApp.Web.Controllers
             this.Config.EntityLabelSelector = e => e.Name;
             this.Config.ViewModelLabelSelector = vm => vm.Name;
             this.Config.Relation(e => e.Roles)
-                .HasOptions(e => rolesRepository.Items)
+                .HasOptions(e => rolesRepository.GetAll())
                 .UsesLabel<RoleOption>(vm => vm.Title);
             this.Config.Relation(e => e.Supervisor)
-                .HasOptions(e => repository.Items)
+                .HasOptions(e => repository.GetAll())
                 .UsesLabel<EmployeeOption>(vm => vm.Name)
                 .CanChooseSelf(false);
         }

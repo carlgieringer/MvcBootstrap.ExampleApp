@@ -15,7 +15,7 @@
             this.Config.EntityLabelSelector = e => e.Title;
             this.Config.ViewModelLabelSelector = vm => vm.Title;
             this.Config.Relation(e => e.Employees)
-                .HasOptions(e => employeesRepository.Items)
+                .HasOptions(e => employeesRepository.GetAll())
                 .UsesLabel<EmployeeOption>(vm => vm.Name);
             //this.Config.Relation(e => e.ParentRole)
             //    .HasOptions(e => repository.Items)

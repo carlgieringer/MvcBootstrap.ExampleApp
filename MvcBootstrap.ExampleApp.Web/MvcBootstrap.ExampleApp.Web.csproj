@@ -211,6 +211,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -315,6 +316,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\Choice.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Accounts\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Accounts\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\Manage.cshtml" />
+    <Content Include="Views\Accounts\Register.cshtml" />
+    <Content Include="Views\Accounts\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Accounts\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Accounts\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Accounts\_SetPasswordPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

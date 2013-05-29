@@ -24,8 +24,7 @@
         [Test]
         public void WhenEmployeeSavedWithoutNameAValidationExceptionOccurs()
         {
-            var employee = this.repository.Create();
-            this.repository.Add(employee);
+            var employee = this.repository.CreateAndAdd();
             
             Assert.That(() => this.repository.SaveChanges(), Throws.InstanceOf<DbEntityValidationException>());
         }
