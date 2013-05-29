@@ -1,11 +1,12 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ViewModels.Accounts.LoginModel
 
 @{
-    ViewBag.Title = "Log In";
+    ViewBag.PageTitle = "Log In";
 }
 
-<h1>@ViewBag.Title</h1>
+<h1>@ViewBag.PageTitle</h1>
 
 <section id="loginForm">
     @using (this.Bootstrap().BeginForm(new { ViewBag.ReturnUrl }))

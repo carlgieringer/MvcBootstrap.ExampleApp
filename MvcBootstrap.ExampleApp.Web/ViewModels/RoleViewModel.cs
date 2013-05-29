@@ -16,7 +16,7 @@
 
         public string Title { get; set; }
 
-        [HideIn(BootstrapAction.List)]
+        [HideIn(BootstrapActions.List)]
         public Choices<EmployeeOption> Employees { get; set; }
 
         public override string ToString()

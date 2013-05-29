@@ -2,12 +2,12 @@
 {
     using System.Web.Mvc;
 
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            this.ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+    using MvcBootstrap.Web.Mvc.Controllers;
 
+    public class HomeController : HomeControllerBase
+    {
+        public override ActionResult Index()
+        {
             return this.View();
         }
 

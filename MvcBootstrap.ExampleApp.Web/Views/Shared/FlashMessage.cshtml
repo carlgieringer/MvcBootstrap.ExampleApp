@@ -1,0 +1,6 @@
+﻿@model MvcBootstrap.Web.Mvc.Controllers.FlashMessage
+
+<div class="alert @Html.AttributeEncode(Model.CssClass())">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    @Model.Message
+</div>

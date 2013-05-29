@@ -1,14 +1,11 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
 @{
-    ViewBag.Title = this.EntityActionTitle();
+    ViewBag.PageTitle = this.PageTitle();
 }
 
-@this.Bootstrap().ReturnLink()
-
-<h1>@ViewBag.Title</h1>
-
-@this.Bootstrap().ValidationSummary("Error(s) saving Employee:")
+@this.Bootstrap().ValidationSummary()
 
 @using (this.Bootstrap().BeginUpdateForm())
 {
@@ -18,7 +15,7 @@
     
     <div class="control-group">
         <div class="controls">
-            @this.Bootstrap().SaveSubmit()
+            @this.Bootstrap().Submit("Save", Icon.Ok, ButtonStyle.Primary)
             @this.Bootstrap().CancelLink(Model.Id)
         </div>
     </div>

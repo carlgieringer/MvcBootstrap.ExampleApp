@@ -1,6 +1,7 @@
-﻿@model MvcBootstrap.ViewModels.IEntityViewModel
+﻿@model IEntityViewModel
 @using MvcBootstrap.Reflection
 @using MvcBootstrap.ViewModels
+@using MvcBootstrap.Web.Mvc.Views
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 @using MvcBootstrap.Extensions
 
@@ -28,13 +29,13 @@ else
                     @if (propMeta.ShouldEdit())
                     {
                         if (propMeta.Model != null &&
-                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choice<>)))
+                            propMeta.Model.GetType().IsConstructedGenericTypeOfDefinition(typeof(Choice<>)))
                         {
                             @Html.Editor(propMeta.PropertyName, "Choice")
                         }
                         else if (
                             propMeta.Model != null &&
-                            propMeta.Model.GetType().IsConstructedGenericTypeFor(typeof(Choices<>)))
+                            propMeta.Model.GetType().IsConstructedGenericTypeOfDefinition(typeof(Choices<>)))
                         {
                             @Html.Editor(propMeta.PropertyName, "Choices")
                         }
@@ -63,7 +64,7 @@ else
                         @Html.Display(propMeta.PropertyName)
                     }
                     
-                    @Html.ValidationMessage(propMeta.PropertyName, new { @class="text-error" })
+                    @this.Bootstrap().ValidationMessage(propMeta.PropertyName)
                 </div>
             </div>
         } 

@@ -1,5 +1,6 @@
 ﻿@using MvcBootstrap.ExampleApp.Web.App_Start.Bundles
 @using MvcBootstrap.ExampleApp.Web.App_Start.Bundles
+@using MvcBootstrap.Web.Mvc.Views
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
@@ -12,7 +13,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>@ViewBag.Title</title>
+        <title>@ViewBag.PageTitle</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
@@ -71,13 +72,12 @@
         </div>
 
         <div class="container">
-            
-            @if (this.HasFlash())
+
+            @this.Bootstrap().Breadcrumbs()
+
+            @foreach (var flash in this.ConsumeFlashes())
             {
-                <div class="alert @this.FlashAlertClass()">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    @this.FlashMessage()
-                </div>
+                @Html.Partial("FlashMessage", flash)
             }
             
             @RenderBody()

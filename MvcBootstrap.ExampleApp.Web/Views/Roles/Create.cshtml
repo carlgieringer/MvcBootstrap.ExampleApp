@@ -1,12 +1,11 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ExampleApp.Web.ViewModels.RoleViewModel
 @{
-    ViewBag.PageTitle = this.EntityActionTitle();
+    ViewBag.PageTitle = this.PageTitle();
 }
 
-@this.Bootstrap().ReturnLink()
-
-<h1>@ViewBag.PageTitle</h1>
+@this.Bootstrap().ValidationSummary()
 
 @using (this.Bootstrap().BeginCreateForm())
 {
@@ -16,8 +15,19 @@
     
     <div class="control-group">
         <div class="controls">
-            @this.Bootstrap().SaveSubmit()
+            @this.Bootstrap().Submit("Save", Icon.Plus, ButtonStyle.Primary)
             @this.Bootstrap().CancelLink()
         </div>
     </div>
+}
+
+@section scripts
+{
+    <script>
+        jQuery(function($) {
+            $('select.related-entity').chosen({
+                allow_single_deselect: true
+            });
+        })
+    </script>
 }

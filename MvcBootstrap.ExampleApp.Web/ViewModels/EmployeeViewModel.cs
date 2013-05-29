@@ -18,7 +18,7 @@
 
         public Choice<EmployeeOption> Supervisor { get; set; }
 
-        [HideIn(BootstrapAction.List)]
+        [HideIn(BootstrapActions.List)]
         public Choices<RoleOption> Roles { get; set; }
 
         public override string ToString()

@@ -1,20 +1,27 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
 @{
-    ViewBag.Title = this.EntityActionTitle();
+    ViewBag.PageTitle = this.PageTitle();
+    int id = Model.Id.Value;
 }
-
-@this.Bootstrap().ReturnLink()
-
-<h1>@ViewBag.Title</h1>
 
 <div class="form-horizontal">
     @Html.DisplayForModel("EntityViewModel")
 
     <div class="control-group">
         <div class="controls">
-            @this.Bootstrap().EditLink(Model.Id.Value)
-            @Html.ActionLink("Delete", "Delete", "Employees", new { id = Model.Id.Value }, new { @class = "btn"})
+            <div class="btn-group">
+                @this.Bootstrap().UpdateLink(id)
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        @this.Bootstrap().DeleteLink(id, style:ButtonStyle.None)
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

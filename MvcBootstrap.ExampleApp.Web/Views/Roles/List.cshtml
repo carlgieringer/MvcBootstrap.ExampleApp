@@ -1,11 +1,10 @@
 ﻿@using MvcBootstrap.ExampleApp.Web.ViewModels
+@using MvcBootstrap.Web.Mvc.Views
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 @model IList<RoleViewModel>
 @{
-    ViewBag.Title = this.ControllerName();
+    ViewBag.PageTitle = this.ControllerName();
 }
-
-<h1>@ViewBag.Title</h1>
 
 @Html.DisplayForModel("EntityTable")
 

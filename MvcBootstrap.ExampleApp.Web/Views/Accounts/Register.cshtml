@@ -1,10 +1,11 @@
-﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+﻿@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
 @model MvcBootstrap.ViewModels.Accounts.RegisterModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.PageTitle = "Register";
 }
 
-<h1>@ViewBag.Title</h1>
+<h1>@ViewBag.PageTitle</h1>
 
 @using (this.Bootstrap().BeginForm()) {
     @Html.AntiForgeryToken()
