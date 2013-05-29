@@ -18,6 +18,7 @@ else
                 @foreach (AuthenticationClientData p in Model)
                 {
                     <button type="submit" 
+                            class="btn"
                             name="provider" 
                             value="@p.AuthenticationClient.ProviderName" 
                             title="Log in using your @p.DisplayName account">

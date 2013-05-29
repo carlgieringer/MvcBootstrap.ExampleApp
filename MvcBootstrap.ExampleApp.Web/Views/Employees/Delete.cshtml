@@ -1,0 +1,28 @@
+﻿@using MvcBootstrap.Web.Mvc.Views.Extensions
+@model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
+@{
+    ViewBag.Title = this.EntityActionTitle();
+}
+
+@this.Bootstrap().ReturnLink()
+
+<h1>@ViewBag.Title</h1>
+
+@if (this.ViewData.ModelState.IsValid)
+{
+    <p>
+        Are you sure you want to delete @this.Bootstrap().ViewModelLabelForModel()?
+    </p>
+}
+
+@this.Bootstrap().ValidationSummary()
+
+@using (this.Bootstrap().BeginUpdateForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <text>
+        @this.Bootstrap().Submit("Delete", new { @class = "btn btn-danger" })
+        @this.Bootstrap().CancelLink(Model.Id)
+    </text>
+}

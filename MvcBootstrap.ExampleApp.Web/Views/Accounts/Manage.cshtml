@@ -21,12 +21,11 @@ else
 }
 
 <section id="externalLogins">
+    
     @Html.Action("RemoveExternalLogins")
 
     <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @Html.Action("ExternalLoginsList", new { ViewBag.ReturnUrl })
+
+</section>

@@ -66,12 +66,7 @@
                                 @Html.ActionLink("Edit", "Update", this.ControllerName(), new { Model[i].Id }, null)
                             </li>
                             <li>
-                                @using (Html.BeginForm("Delete", this.ControllerName(), new { Model[i].Id }))
-                                {
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="icon-trash icon-white"></i> Delete
-                                    </button>
-                                }
+                                @Html.ActionLink("Delete", "Delete", this.ControllerName(), new { Model[i].Id }, null)
                             </li>
                         </ul>
                     </div>
