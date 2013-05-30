@@ -1,5 +1,7 @@
 ﻿namespace MvcBootstrap.ExampleApp.Web.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     using MvcBootstrap.ViewModels;
     using MvcBootstrap.ViewModels.Attributes;
     using MvcBootstrap.Web.Mvc.Controllers;
@@ -12,6 +14,7 @@
             this.Supervisor = new Choice<EmployeeOption>();
         }
 
+        [Required]
         public string Name { get; set; }
 
         public string Quest { get; set; }

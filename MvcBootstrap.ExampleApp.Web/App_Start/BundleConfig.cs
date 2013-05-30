@@ -21,18 +21,23 @@
     {
         public static readonly BundleInfo[] StyleInfos = new[]
             {
-                Bundles.Bundles.Styles.Bootstrap,
-                Bundles.Bundles.Styles.Site,
-                Bundles.Bundles.Styles.Mvc,
-                Bundles.Bundles.Styles.Chosen,
+                StyleBundles.Bootstrap,
+                StyleBundles.Chosen,
+                StyleBundles.JQueryUI,
+                StyleBundles.MvcBootstrap,
+                StyleBundles.Mvc,
             };
 
         public static readonly BundleInfo[] ScriptInfos = new[]
             {
-                Bundles.Bundles.Scripts.Bootstrap,
-                Bundles.Bundles.Scripts.Modernizr,
-                Bundles.Bundles.Scripts.RespondJs,
-                Bundles.Bundles.Scripts.Chosen,
+                ScriptBundles.Bootstrap,
+                ScriptBundles.Chosen,
+                ScriptBundles.JQuery,
+                ScriptBundles.JQueryAjax,
+                ScriptBundles.JQueryUI,
+                ScriptBundles.JQueryValidate,
+                ScriptBundles.Modernizr,
+                ScriptBundles.RespondJs,
             };
 
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725

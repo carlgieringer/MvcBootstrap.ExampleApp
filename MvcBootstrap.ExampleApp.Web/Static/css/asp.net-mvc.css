@@ -8,5 +8,5 @@
  * Since we only want this message to appear when invalid, hide this class.   
  */
 .validation-summary-valid {
-     display:none;
+     /*display:none;*/
 }

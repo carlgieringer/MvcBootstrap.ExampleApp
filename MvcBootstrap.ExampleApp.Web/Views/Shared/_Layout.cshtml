@@ -1,5 +1,4 @@
 ﻿@using MvcBootstrap.ExampleApp.Web.App_Start.Bundles
-@using MvcBootstrap.ExampleApp.Web.App_Start.Bundles
 @using MvcBootstrap.Web.Mvc.Views
 @using MvcBootstrap.Web.Mvc.Views.Extensions
 <!DOCTYPE html>
@@ -19,13 +18,14 @@
         <meta name="viewport" content="width=device-width" />
         
         @Styles.Render(
-            Bundles.Styles.Bootstrap.Name, 
-            Bundles.Styles.Site.Name, 
-            Bundles.Styles.Mvc.Name, 
-            Bundles.Styles.Chosen.Name)
+            StyleBundles.Bootstrap.Name, 
+            StyleBundles.MvcBootstrap.Name, 
+            StyleBundles.Mvc.Name, 
+            StyleBundles.Chosen.Name,
+            StyleBundles.JQueryUI.Name)
         @Scripts.Render(
-            Bundles.Scripts.Modernizr.Name, 
-            Bundles.Scripts.RespondJs.Name)
+            ScriptBundles.Modernizr.Name, 
+            ScriptBundles.RespondJs.Name)
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -98,8 +98,12 @@
         <script>window.jQuery || document.write('<script src="Static/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         
         @Scripts.Render(
-            Bundles.Scripts.Bootstrap.Name,
-            Bundles.Scripts.Chosen.Name)
+            ScriptBundles.JQuery.Name,
+            ScriptBundles.JQueryUI.Name,
+            ScriptBundles.JQueryValidate.Name,
+            ScriptBundles.JQueryAjax.Name,
+            ScriptBundles.Bootstrap.Name,
+            ScriptBundles.Chosen.Name)
         
         @RenderSection("scripts", required: false)
 

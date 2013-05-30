@@ -15,7 +15,7 @@
         {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var bundle = BundleTable.Bundles.GetBundleFor(Bundles.Styles.Site.Name);
+            var bundle = BundleTable.Bundles.GetBundleFor(StyleBundles.MvcBootstrap.Name);
 
             Assert.That(bundle, Is.Not.Null);
         }
@@ -25,7 +25,7 @@
         {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var bundle = BundleTable.Bundles.GetBundleFor(Bundles.Styles.Bootstrap.Name);
+            var bundle = BundleTable.Bundles.GetBundleFor(StyleBundles.Bootstrap.Name);
 
             Assert.That(bundle, Is.Not.Null);
         }

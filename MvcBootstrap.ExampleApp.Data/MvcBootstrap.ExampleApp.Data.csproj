@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201305290517472_AddUserProfiles.Designer.cs">
       <DependentUpon>201305290517472_AddUserProfiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305292020095_AddUserProfileEmail.cs" />
+    <Compile Include="Migrations\201305292020095_AddUserProfileEmail.Designer.cs">
+      <DependentUpon>201305292020095_AddUserProfileEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Repositories\IRolesRepository.cs" />
     <Compile Include="Repositories\EmployeesRepository.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305290517472_AddUserProfiles.resx">
       <DependentUpon>201305290517472_AddUserProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305292020095_AddUserProfileEmail.resx">
+      <DependentUpon>201305292020095_AddUserProfileEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

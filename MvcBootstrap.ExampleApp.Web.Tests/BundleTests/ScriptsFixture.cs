@@ -15,7 +15,7 @@
         {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var bundle = BundleTable.Bundles.GetBundleFor(Bundles.Scripts.Bootstrap.Name);
+            var bundle = BundleTable.Bundles.GetBundleFor(ScriptBundles.Bootstrap.Name);
 
             Assert.That(bundle, Is.Not.Null);
         }
@@ -25,7 +25,7 @@
         {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var bundle = BundleTable.Bundles.GetBundleFor(Bundles.Scripts.Modernizr.Name);
+            var bundle = BundleTable.Bundles.GetBundleFor(ScriptBundles.Modernizr.Name);
 
             Assert.That(bundle, Is.Not.Null);
         }
@@ -35,7 +35,7 @@
         {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var bundle = BundleTable.Bundles.GetBundleFor(Bundles.Scripts.RespondJs.Name);
+            var bundle = BundleTable.Bundles.GetBundleFor(ScriptBundles.RespondJs.Name);
 
             Assert.That(bundle, Is.Not.Null);
         }
