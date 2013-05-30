@@ -6,11 +6,13 @@
 
     public class HomeController : HomeControllerBase
     {
+        [AllowAnonymous]
         public override ActionResult Index()
         {
             return this.View();
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             this.ViewBag.Message = "Your app description page.";
@@ -18,6 +20,7 @@
             return this.View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             this.ViewBag.Message = "Your contact page.";
