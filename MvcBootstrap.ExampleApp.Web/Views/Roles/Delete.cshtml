@@ -12,13 +12,13 @@
     </p>
 }
 
-@this.Bootstrap().ValidationSummary()
 
 @using (this.Bootstrap().BeginUpdateForm())
 {
-    <text>
-        @Html.AntiForgeryToken()
-        @this.Bootstrap().Submit("Delete", Icon.Ok, ButtonStyle.Danger)
-        @this.Bootstrap().CancelLink(Model.Id)
-    </text>
+    @Html.AntiForgeryToken()
+    
+    @:@this.Bootstrap().ValidationSummary()
+
+    @:@this.Bootstrap().Submit("Delete", Icon.Ok, ButtonStyle.Danger)
+    @:@this.Bootstrap().CancelLink(Model.Id)
 }

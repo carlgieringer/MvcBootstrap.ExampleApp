@@ -5,7 +5,7 @@
     using MvcBootstrap.Data;
     using MvcBootstrap.ExampleApp.Domain.Models;
 
-    public class UserProfileRepository : UserProfileRepositoryBase<UserProfile>
+    public class UserProfileRepository : UserProfileRepositoryBase<ExampleUserProfile>
     {
         public UserProfileRepository(DbContext context)
             : base(context)

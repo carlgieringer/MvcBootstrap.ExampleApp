@@ -1,19 +1,23 @@
 ﻿@using MvcBootstrap.Web.Mvc.Views
-@using MvcBootstrap.Web.Mvc.Views.Extensions
-@model MvcBootstrap.ViewModels.Accounts.RegisterModel
+@using MvcBootstrap.ExampleApp.Web.ViewModels
+@model MvcBootstrap.ViewModels.Accounts.RegistrationModel<ExampleUserProfileViewModel>
 @{
     ViewBag.PageTitle = "Register";
 }
 
 <h1>@ViewBag.PageTitle</h1>
 
-@using (this.Bootstrap().BeginForm()) {
+@using (this.Bootstrap().BeginForm()) 
+{
     @Html.AntiForgeryToken()
-    <text>
-        @this.Bootstrap().ValidationSummary("There were errors with your registration:")
-        @this.Bootstrap().TextBoxGroupFor(m => m.Username)
-        @this.Bootstrap().TextBoxGroupFor(m => m.Password)
-        @this.Bootstrap().TextBoxGroupFor(m => m.ConfirmPassword)
-        @this.Bootstrap().SubmitGroup("Register")
-    </text>
+
+    @:@this.Bootstrap().ValidationSummary("There were errors with your registration:")
+
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Username)
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Email)
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Nickname)
+    @:@this.Bootstrap().PasswordGroupFor(m => m.Password)
+    @:@this.Bootstrap().PasswordGroupFor(m => m.ConfirmPassword)
+        
+    @:@this.Bootstrap().SubmitGroup("Register")
 }

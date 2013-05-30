@@ -1,22 +1,22 @@
 ﻿@using MvcBootstrap.Web.Mvc.Views
 @using MvcBootstrap.Web.Mvc.Views.Extensions
-@model MvcBootstrap.ExampleApp.Web.ViewModels.EmployeeViewModel
+@model MvcBootstrap.ExampleApp.Web.ViewModels.ExampleUserProfileViewModel
 @{
     ViewBag.PageTitle = this.PageTitle();
 }
 
-@using (this.Bootstrap().BeginUpdateForm())
+@using (this.Bootstrap().BeginCreateForm())
 {
-    @Html.AntiForgeryToken()
+    @:@this.Bootstrap().ValidationSummary()
     
-    @:@this.Bootstrap().ValidationSummary("Unable to update the Employee:")
+    @Html.AntiForgeryToken()
 
     @Html.EditorForModel("EntityViewModel")
     
     <div class="control-group">
         <div class="controls">
-            @this.Bootstrap().Submit("Save", Icon.Ok, ButtonStyle.Primary)
-            @this.Bootstrap().CancelLink(Model.Id)
+            @this.Bootstrap().Submit("Create", Icon.Ok, ButtonStyle.Primary)
+            @this.Bootstrap().CancelLink()
         </div>
     </div>
 }

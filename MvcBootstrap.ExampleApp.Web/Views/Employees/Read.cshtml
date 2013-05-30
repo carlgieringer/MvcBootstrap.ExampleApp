@@ -12,7 +12,9 @@
     <div class="control-group">
         <div class="controls">
             <div class="btn-group">
+                
                 @this.Bootstrap().UpdateLink(id)
+                
                 <button class="btn dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                 </button>
@@ -21,6 +23,7 @@
                         @this.Bootstrap().DeleteLink(id, style:ButtonStyle.None)
                     </li>
                 </ul>
+
             </div>
         </div>
     </div>

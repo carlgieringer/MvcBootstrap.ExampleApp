@@ -39,7 +39,7 @@
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserProfile>();
+            modelBuilder.Entity<ExampleUserProfile>();
 
             modelBuilder.Entity<Employee>()
                 .HasKey(e => e.Id);

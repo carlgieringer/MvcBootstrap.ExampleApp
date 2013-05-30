@@ -215,6 +215,8 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
+    <Compile Include="ViewModels\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\EmployeeOption.cs" />
     <Compile Include="ViewModels\RoleOption.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
@@ -344,6 +346,11 @@
     <Content Include="Views\Shared\DisplayTemplates\EntityTable.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EntityViewModel.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\UserProfiles\Create.cshtml" />
+    <Content Include="Views\UserProfiles\Delete.cshtml" />
+    <Content Include="Views\UserProfiles\List.cshtml" />
+    <Content Include="Views\UserProfiles\Read.cshtml" />
+    <Content Include="Views\UserProfiles\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

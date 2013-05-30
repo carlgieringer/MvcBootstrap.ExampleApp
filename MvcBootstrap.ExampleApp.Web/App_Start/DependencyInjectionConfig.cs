@@ -34,8 +34,8 @@
                 .InstancePerHttpRequest();
 
             builder.Register(c => new UserProfileRepository(c.Resolve<DbContext>()))
-                .As<IBootstrapRepository<UserProfile>>()
-                .As<IUserProfileRepository<UserProfile>>()
+                .As<IBootstrapRepository<ExampleUserProfile>>()
+                .As<IUserProfileRepository<ExampleUserProfile>>()
                 .InstancePerHttpRequest();
             
             var container = builder.Build();

@@ -6,33 +6,34 @@
     ViewBag.PageTitle = "Log In";
 }
 
-<h1>@ViewBag.PageTitle</h1>
+<div class="row">
+    <div class="span5">
+        
+        <h2>Login using your account</h2>
 
-<section id="loginForm">
-    @using (this.Bootstrap().BeginForm(new { ViewBag.ReturnUrl }))
-    {
-        @Html.AntiForgeryToken()
+        @using (this.Bootstrap().BeginForm(new { ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
     
-        <text>
-            @this.Bootstrap().ValidationSummary()
+            <text>
+                @this.Bootstrap().ValidationSummary()
 
-            @this.Bootstrap().TextBoxGroupFor(m => m.Username)
-            @this.Bootstrap().PasswordGroupFor(m => m.Password)
-            @this.Bootstrap().CheckboxGroupFor(m => m.RememberMe)
+                @this.Bootstrap().TextBoxGroupFor(m => m.Username)
+                @this.Bootstrap().PasswordGroupFor(m => m.Password)
+                @this.Bootstrap().CheckboxGroupFor(m => m.RememberMe)
     
-            @this.Bootstrap().SubmitGroup("Log In")
-        </text>
+                @this.Bootstrap().SubmitGroup("Log In")
+            </text>
 
-        <p>
-            Or @Html.ActionLink("Register", "Register") if you don't have an account.
-        </p>
-    }
-</section>
+            <p>
+                Or @Html.ActionLink("Register", "Register") if you don't have an account.
+            </p>
+        }
+    </div>
+    <div class="span4">
+        
+        <h2>Use an external service to log in.</h2>
 
-<section class="social" id="socialLoginForm">
-    
-    <h2>Use an external service to log in.</h2>
-
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-
-</section>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
+</div>

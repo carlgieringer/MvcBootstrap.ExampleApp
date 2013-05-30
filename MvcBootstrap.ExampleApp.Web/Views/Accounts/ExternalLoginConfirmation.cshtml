@@ -1,6 +1,6 @@
 ﻿@using MvcBootstrap.Web.Mvc.Views
-@using MvcBootstrap.Web.Mvc.Views.Extensions
-@model MvcBootstrap.ViewModels.Accounts.RegisterExternalLoginModel
+@using MvcBootstrap.ExampleApp.Web.ViewModels
+@model MvcBootstrap.ViewModels.Accounts.ExternalLoginRegistrationModel<ExampleUserProfileViewModel>
 @{
     ViewBag.PageTitle = "Register";
 }
@@ -9,22 +9,23 @@
 
 <h2>Associate your @ViewBag.ProviderDisplayName account.</h2>
 
-@using (this.Bootstrap().BeginForm("ExternalLoginConfirmation", "Accounts", new { ViewBag.ReturnUrl })) {
+@using (this.Bootstrap().BeginForm("ExternalLoginConfirmation", "Accounts", new { ViewBag.ReturnUrl })) 
+{
     @Html.AntiForgeryToken()
 
-    <text>
-        @this.Bootstrap().ValidationSummary()
+    @:@this.Bootstrap().ValidationSummary()
 
-        <p>
-            You've successfully authenticated with <strong>@ViewBag.ProviderDisplayName</strong>.
-            Please enter a user name for this site below and click the Confirm button to finish
-            logging in.
-        </p>
+    <p>
+        You've successfully authenticated with <strong>@ViewBag.ProviderDisplayName</strong>.
+        Please enter a user name for this site below and click the Confirm button to finish
+        logging in.
+    </p>
     
-        @this.Bootstrap().TextBoxGroupFor(m => m.Username)
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Username)
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Email)
+    @:@this.Bootstrap().TextBoxGroupFor(m => m.UserProfileViewModel.Nickname)
 
-        @Html.HiddenFor(m => m.ExternalLoginData)
+    @Html.HiddenFor(m => m.ExternalLoginData)
 
-        @this.Bootstrap().Submit("Register")
-    
-    </text>}
+    @:@this.Bootstrap().SubmitGroup("Register", style: ButtonStyle.Primary)
+}

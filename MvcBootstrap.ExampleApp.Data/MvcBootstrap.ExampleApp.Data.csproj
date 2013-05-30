@@ -58,6 +58,14 @@
     <Compile Include="Migrations\201305292020095_AddUserProfileEmail.Designer.cs">
       <DependentUpon>201305292020095_AddUserProfileEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305300135259_UserProfileUserNameRequiredAndUnique.cs" />
+    <Compile Include="Migrations\201305300135259_UserProfileUserNameRequiredAndUnique.Designer.cs">
+      <DependentUpon>201305300135259_UserProfileUserNameRequiredAndUnique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305300408376_UserProfileNickname.cs" />
+    <Compile Include="Migrations\201305300408376_UserProfileNickname.Designer.cs">
+      <DependentUpon>201305300408376_UserProfileNickname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Repositories\IRolesRepository.cs" />
     <Compile Include="Repositories\EmployeesRepository.cs" />
@@ -90,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305292020095_AddUserProfileEmail.resx">
       <DependentUpon>201305292020095_AddUserProfileEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305300135259_UserProfileUserNameRequiredAndUnique.resx">
+      <DependentUpon>201305300135259_UserProfileUserNameRequiredAndUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305300408376_UserProfileNickname.resx">
+      <DependentUpon>201305300408376_UserProfileNickname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

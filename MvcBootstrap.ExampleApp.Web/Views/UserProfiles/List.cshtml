@@ -1,0 +1,11 @@
+﻿@using MvcBootstrap.ExampleApp.Web.ViewModels
+@using MvcBootstrap.Web.Mvc.Views
+@using MvcBootstrap.Web.Mvc.Views.Extensions
+@model IList<ExampleUserProfileViewModel>
+@{
+    ViewBag.PageTitle = this.ControllerName();
+}
+
+@Html.DisplayForModel("EntityTable")
+
+@this.Bootstrap().CreateLink()

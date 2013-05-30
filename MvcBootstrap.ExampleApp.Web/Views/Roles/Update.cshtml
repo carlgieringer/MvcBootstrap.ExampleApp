@@ -5,11 +5,12 @@
     ViewBag.PageTitle = this.PageTitle();
 }
 
-@this.Bootstrap().ValidationSummary()
 
 @using (this.Bootstrap().BeginUpdateForm())
 {
     @Html.AntiForgeryToken()
+
+    @:@this.Bootstrap().ValidationSummary()
 
     @Html.EditorForModel("EntityViewModel")
     
